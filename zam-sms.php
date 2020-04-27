@@ -83,9 +83,9 @@ public static function Instantiate() {
 					
 					if ($status == 'queued') {
 						
-						$contacts = isset($send_results['contacts']) ? sanitize_text_field($send_results['contacts']) : '';
-						$senderid = isset($send_results['senderid']) ? sanitize_text_field($send_results['senderid']) : '';
-						$message = isset($send_results['message']) ? sanitize_text_field($send_results['message']) : '';
+						$to = isset($send_results['contacts']) ? sanitize_text_field($send_results['contacts']) : '';
+						$from = isset($send_results['senderid']) ? sanitize_text_field($send_results['senderid']) : '';
+						$body = isset($send_results['message']) ? sanitize_text_field($send_results['message']) : '';
 					
 						
 						$send_results_html .= '
@@ -260,4 +260,42 @@ public static function Instantiate() {
             
             return ($results);
         }
- }
+        private function CURL_SendSMS($key, $senderid, $contacts, $message) {
+				
+            // URL to send data to
+                $url = 'http://bulksms.zamatel.co.zm/api/sms/send/batch?'.$key.'/Messages.json';
+            
+            
+            // Set the data we will post to Twilio
+                $data = array(
+                    'From' => $senderid,
+                    'To' => $contacts,
+                    'Body' => $message,
+                );
+                
+            // Set the authorization header
+                $basic_auth = 'Basic ' . base64_encode($key);
+                $headers = array( 
+                    'Authorization' => $basic_auth,
+                );
+                
+                $args = array(
+                    'body' => $data,
+                    'timeout' => '60',
+                    'headers' => $headers,
+                );
+                
+                $response = wp_remote_post($url, $args);
+                $json = json_decode($response['body'], true);	// Convert the returned JSON string into an array
+            
+            return ($json);
+        }
+        
+        
+    // Message to output in the WordPress admin footer
+        private function AddAdminFooter() {
+            echo 'Plain Plugins | Check out our website at <a href="https://cynojine.com" target="_blank">plainplugins.altervista.org</a> for more plugins!';
+        }
+}
+
+ZamSMS::Instantiate();	// Instantiate an instance of the class
