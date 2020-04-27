@@ -21,4 +21,17 @@ public static function Instantiate() {
         self::$_instance = new self();
     }
     return self::$_instance;
+
     }
+
+    private function __construct() {
+			
+        // - Side Menu (which loads the back-end)
+            add_action('admin_menu', function() {
+                $this->AdminMenu();
+            });
+    }
+
+
+    
+}
