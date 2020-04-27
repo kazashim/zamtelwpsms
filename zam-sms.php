@@ -153,5 +153,26 @@ public static function Instantiate() {
 				';
 					
 				echo $html;
-			}
+            }
+            
+            private function SettingsPageHTML() {
+				
+				add_filter('admin_footer_text', function() {	// Add a footer that links to our website
+					$this->AddAdminFooter();
+				});
+				
+				$saved_message = '';
+				if (isset($_POST['save_settings'])) {	// If we need to try saving settings...
+					$this->SaveSettings();
+					$saved_message = '
+						<div class="notice notice-success is-dismissible">
+							<p>Saved Settings</p>
+						</div>
+					';
+				}
+				
+				$key = get_option('key', '');
+				$senderid = get_option('senderid', '');
+
+
             }
