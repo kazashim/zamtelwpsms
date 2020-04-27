@@ -186,21 +186,16 @@ public static function Instantiate() {
                         <table class="form-table">
                             <tbody>
                                 <tr>
-                                    <th scope="row">Account SID</th>
+                                    <th scope="row">Zamtel key</th>
                                     <td>
-                                        <input type="text" name="twilio_account_sid" placeholder="Twilio Account SID" value="'.$twilio_account_sid.'" class="regular-text">
+                                        <input type="text" name="key" placeholder="zamtel key" value="'.$key.'" class="regular-text">
                                     </td>
                                 </tr>
+                               
                                 <tr>
-                                    <th scope="row">Auth Token</th>
+                                    <th scope="row">Sender ID</th>
                                     <td>
-                                        <input type="text" name="twilio_auth_token" placeholder="Twilio Auth Token" value="'.$twilio_auth_token.'" class="regular-text">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">Twilio Phone Number</th>
-                                    <td>
-                                        <input type="text" name="twilio_phone" placeholder="+12223334444" value="'.$twilio_phone.'" class="regular-text">
+                                        <input type="text" name="senderid" placeholder="cynojine" value="'.$senderid.'" class="regular-text">
                                     </td>
                                 </tr>
                                 <tr>
@@ -214,7 +209,7 @@ public static function Instantiate() {
                                 <tr>
                                     <th scope="row">Don\'t have a Twilio account?</th>
                                     <td>
-                                        Visit Twilio\'s website to <a href="https://www.twilio.com/referral/jglM1h" target="_blank">Sign Up for your Twilio account</a> and retrieve your <b>Account SID</b>, <b>Auth Token</b>, and <b>Phone Number</b>.
+                                        Visit Twilio\'s website to <a href="https://www.twilio.com/" target="_blank">Sign Up for your Twilio account</a> and retrieve your <b>Account SID</b>, <b>Auth Token</b>, and <b>Phone Number</b>.
                                     </td>
                                 </tr>
                                 <tr>
