@@ -12,5 +12,13 @@
     
 
     class ZamSMS {
-
+// - Get the static instance variable
+private static $_instance = null;
+		
+		
+public static function Instantiate() {
+    if (is_null(self::$_instance)) {
+        self::$_instance = new self();
+    }
+    return self::$_instance;
     }
