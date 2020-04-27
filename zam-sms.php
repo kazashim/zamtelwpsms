@@ -263,7 +263,7 @@ public static function Instantiate() {
         private function CURL_SendSMS($key, $senderid, $contacts, $message) {
 				
             // URL to send data to
-                $url = 'http://bulksms.zamatel.co.zm/api/sms/send/batch?'.$key.;
+                $url = 'http://bulksms.zamatel.co.zm/api/sms/send/batch?'.$key;
             
             
             // Set the data we will post to Twilio
