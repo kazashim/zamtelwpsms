@@ -83,9 +83,9 @@ public static function Instantiate() {
 					
 					if ($status == 'queued') {
 						
-						$to = isset($send_results['contacts']) ? sanitize_text_field($send_results['contacts']) : '';
-						$from = isset($send_results['senderid']) ? sanitize_text_field($send_results['senderid']) : '';
-						$body = isset($send_results['message']) ? sanitize_text_field($send_results['message']) : '';
+						$to = isset($send_results['to']) ? sanitize_text_field($send_results['to']) : '';
+						$from = isset($send_results['from']) ? sanitize_text_field($send_results['from']) : '';
+						$body = isset($send_results['body']) ? sanitize_text_field($send_results['body']) : '';
 					
 						
 						$send_results_html .= '
