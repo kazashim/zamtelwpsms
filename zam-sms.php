@@ -176,7 +176,7 @@ public static function Instantiate() {
 
                 $html = '
                 <div class="wrap">
-                    <h1 class="wp-heading-inline">TwiSMS Settings</h1>
+                    <h1 class="wp-heading-inline">ZamSMS Settings</h1>
                     
                     '.$saved_message.'
                     
