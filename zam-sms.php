@@ -256,14 +256,14 @@ public static function Instantiate() {
                 $senderid = get_option('senderid', '');
             
             // Send the SMS
-                $results = $this->CURL_SendSMS($key, $twilio_auth_token, $senderid, $contacts, $message);
+                $results = $this->CURL_SendSMS($key, $senderid, $contacts, $message);
             
             return ($results);
         }
         private function CURL_SendSMS($key, $senderid, $contacts, $message) {
 				
             // URL to send data to
-                $url = 'http://bulksms.zamatel.co.zm/api/sms/send/batch?'.$key.'/Messages.json';
+                $url = 'http://bulksms.zamatel.co.zm/api/sms/send/batch?'.$key.S;
             
             
             // Set the data we will post to Twilio
