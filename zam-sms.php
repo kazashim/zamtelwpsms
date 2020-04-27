@@ -174,5 +174,66 @@ public static function Instantiate() {
 				$key = get_option('key', '');
 				$senderid = get_option('senderid', '');
 
-
+                $html = '
+                <div class="wrap">
+                    <h1 class="wp-heading-inline">TwiSMS Settings</h1>
+                    
+                    '.$saved_message.'
+                    
+                    <form method="post">
+                        <input type="hidden" name="save_settings" value="1" />
+                        
+                        <table class="form-table">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Account SID</th>
+                                    <td>
+                                        <input type="text" name="twilio_account_sid" placeholder="Twilio Account SID" value="'.$twilio_account_sid.'" class="regular-text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Auth Token</th>
+                                    <td>
+                                        <input type="text" name="twilio_auth_token" placeholder="Twilio Auth Token" value="'.$twilio_auth_token.'" class="regular-text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Twilio Phone Number</th>
+                                    <td>
+                                        <input type="text" name="twilio_phone" placeholder="+12223334444" value="'.$twilio_phone.'" class="regular-text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                        <button type="submit" class="button button-primary">
+                                            Save
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Don\'t have a Twilio account?</th>
+                                    <td>
+                                        Visit Twilio\'s website to <a href="https://www.twilio.com/referral/jglM1h" target="_blank">Sign Up for your Twilio account</a> and retrieve your <b>Account SID</b>, <b>Auth Token</b>, and <b>Phone Number</b>.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <td>
+                                        <p class="description">
+                                            Twilio is a cloud communications platform that allows users to send and receive text messages.
+                                        </p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                    </form>
+                    
+                    
+                </div>
+            ';
+                
+            echo $html;
+        }
             }
