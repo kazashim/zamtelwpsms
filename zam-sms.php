@@ -33,5 +33,34 @@ public static function Instantiate() {
     }
 
 
-    
+    // Main Admin Page Menu
+
+			private function AdminMenu() {
+				
+				// Output the main menu item in the left menu				
+					add_menu_page(
+						'ZamSMS', 
+						'ZamSMS', 
+						'manage_options', 
+						'zam-sms', 
+						function() {
+							$this->MainPageHTML();
+						}, 
+						'dashicons-admin-comments'
+					);
+					
+				// Output the second menu item
+					add_submenu_page(
+						'zam-sms', 
+						'ZamSMS Settings',
+						'Settings',
+						'manage_options',
+						'zam-sms-settings',
+						function() {
+							$this->SettingsPageHTML();
+						},
+						1
+					);
+					
+			}
 }
