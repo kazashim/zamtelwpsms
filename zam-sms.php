@@ -235,8 +235,8 @@ public static function Instantiate() {
         private function SaveSettings() {
 				
             // Get the settings
-                $key = isset($_POST['twilio_account_sid']) ? sanitize_text_field($_POST['twilio_account_sid']) : '';
-                $senderid = isset($_POST['twilio_phone']) ? sanitize_text_field($_POST['twilio_phone']) : '';
+                $key = isset($_POST['key']) ? sanitize_text_field($_POST['key']) : '';
+                $senderid = isset($_POST['senderid']) ? sanitize_text_field($_POST['senderid']) : '';
             
             // Save the settings
                 update_option('key', $key);
@@ -244,4 +244,20 @@ public static function Instantiate() {
                 
         }
 
+        private function SendSMS() {
+            $results = '';
+            
+            // Get phone and message
+                $contacts = isset($_POST['contacts']) ? sanitize_text_field($_POST['contacts']) : '';
+                $message = isset($_POST['message']) ? sanitize_text_field($_POST['message']) : '';
+                
+            // Get the other relevant data
+                $key = get_option('key', '');
+                $senderid = get_option('senderid', '');
+            
+            // Send the SMS
+                $results = $this->CURL_SendSMS($key, $twilio_auth_token, $senderid, $contacts, $message);
+            
+            return ($results);
+        }
  }
