@@ -112,4 +112,46 @@ public static function Instantiate() {
 							</div>
 						';
 					}
-				}
+                }
+                $html = '
+					<div class="wrap">
+						<h1 class="wp-heading-inline"></h1>
+						
+						'.$send_results_html.'
+						
+						<form method="post" style="display:inline-block;">
+							<input type="hidden" name="send_sms" value="1" />
+							
+							
+								
+							<div style="display:inline-block;">
+								<div>
+									<div><b>To Phone</b></div>
+									<input type="text" name="contacts" placeholder="To Phone" value="" class="regular-text">
+								</div>
+								
+								<br>
+								
+								<div>
+									<div><b>Message</b></div>
+									<textarea class="regular-text" name="message" style="height:120px;"></textarea>
+								</div>
+								
+								<br>
+								
+								<div>
+									<button type="submit" class="button button-primary">
+										Send Message
+									</button>
+								</div>
+							</div>
+							
+						</form>
+							
+					</div>
+					
+				';
+					
+				echo $html;
+			}
+            }
