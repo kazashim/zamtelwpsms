@@ -231,4 +231,17 @@ public static function Instantiate() {
                 
             echo $html;
         }
-            }
+
+        private function SaveSettings() {
+				
+            // Get the settings
+                $key = isset($_POST['twilio_account_sid']) ? sanitize_text_field($_POST['twilio_account_sid']) : '';
+                $senderid = isset($_POST['twilio_phone']) ? sanitize_text_field($_POST['twilio_phone']) : '';
+            
+            // Save the settings
+                update_option('key', $key);
+                update_option('senderid', $senderid);
+                
+        }
+
+ }
