@@ -83,9 +83,9 @@ public static function Instantiate() {
 					
 					if ($status == 'queued') {
 						
-						$to = isset($send_results['to']) ? sanitize_text_field($send_results['to']) : '';
-						$from = isset($send_results['from']) ? sanitize_text_field($send_results['from']) : '';
-						$body = isset($send_results['body']) ? sanitize_text_field($send_results['body']) : '';
+						$contacts = isset($send_results['contacts']) ? sanitize_text_field($send_results['contacts']) : '';
+						$senderid = isset($send_results['senderid']) ? sanitize_text_field($send_results['senderid']) : '';
+						$message = isset($send_results['message']) ? sanitize_text_field($send_results['message']) : '';
 					
 						
 						$send_results_html .= '
@@ -97,9 +97,9 @@ public static function Instantiate() {
 						$send_results_msg_bubble .= '<div class="msg-bubble">';
 							$send_results_msg_bubble .= '<div style="margin-bottom:5px;">';
 								$send_results_msg_bubble .= '<b style="font-size:0.8em; font-weight:700;">Sent</b>';
-								$send_results_msg_bubble .= '<b style="float:right; font-size:0.8em; font-weight:700;">'.$to.'</b>';
+								$send_results_msg_bubble .= '<b style="float:right; font-size:0.8em; font-weight:700;">'.$contacts.'</b>';
 							$send_results_msg_bubble .= '</div>';
-							$send_results_msg_bubble .= $body;
+							$send_results_msg_bubble .= $message;
 						$send_results_msg_bubble .= '</div>';
 					}
 					else {
@@ -207,16 +207,16 @@ public static function Instantiate() {
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Don\'t have a Twilio account?</th>
+                                    <th scope="row">Don\'t have a Zamtel Mulk account?</th>
                                     <td>
-                                        Visit Twilio\'s website to <a href="https://www.twilio.com/" target="_blank">Sign Up for your Twilio account</a> and retrieve your <b>Account SID</b>, <b>Auth Token</b>, and <b>Phone Number</b>.
+                                        Visit Zamtel\'s website to <a href="https://www.zamtel.co.zm/" target="_blank">Sign Up for your Twilio account</a> and retrieve your <b>Account SID</b>, <b>Auth Token</b>, and <b>Phone Number</b>.
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row"></th>
                                     <td>
                                         <p class="description">
-                                            Twilio is a cloud communications platform that allows users to send and receive text messages.
+                                            ZamtelBulk is a cloud communications platform that allows users to send and receive text messages.
                                         </p>
                                     </td>
                                 </tr>
@@ -268,9 +268,9 @@ public static function Instantiate() {
             
             // Set the data we will post to Twilio
                 $data = array(
-                    'From' => $senderid,
-                    'To' => $contacts,
-                    'Body' => $message,
+                    'senderid' => $senderid,
+                    'contects' => $contacts,
+                    'message' => $message,
                 );
                 
             // Set the authorization header
@@ -286,7 +286,7 @@ public static function Instantiate() {
                 );
                 
                 $response = wp_remote_post($url, $args);
-                $json = json_decode($response['body'], true);	// Convert the returned JSON string into an array
+                $json = json_decode($response['message'], true);	// Convert the returned JSON string into an array
             
             return ($json);
         }
